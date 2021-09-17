@@ -14,8 +14,6 @@ global switch
 def sec_A_On(ke):
     global switch
     print('{0} pressed'.format(ke)) # printing whatever key is pressed
-    if ke == pynput.keyboard.Key.right: #First Test
-        midiout.send_message([0x90, 60, 112])
     if hasattr(ke, 'vk') and ke.vk ==106 :  # Numpad *  Changing Sec_A to Sec_B
         if switch == 2:
             return False
@@ -57,10 +55,6 @@ def sec_A_On(ke):
  
 def sec_A_Off(ke):
     print('{0} release'.format(ke)) # printing whatever key is pressed
-    if ke == pynput.keyboard.Key.right: # First Test
-        midiout.send_message([0x80, 60, 0])
-    if ke == pynput.keyboard.Key.esc: # Emergency Exit
-        return False
     if hasattr(ke, 'vk') and ke.vk == 96 : # Numpad 0
         midiout.send_message([0x80, 12, 0])  # (Note-off,C-0,Volume 0)
     if hasattr(ke, 'vk') and ke.vk == 97 : # Numpad 1
@@ -126,8 +120,6 @@ def sec_B_On(ke):
  
 def sec_B_Off(ke):
     print('{0} release'.format(ke)) # printing whatever key is pressed
-    if ke == pynput.keyboard.Key.esc: # Emergency Exit
-        return False
     if hasattr(ke, 'vk') and ke.vk == 96 : # Numpad 0
         midiout.send_message([0x80, 22, 0])  # (Note-off,A#-0,Volume 0)
     if hasattr(ke, 'vk') and ke.vk == 97 : # Numpad 1
@@ -193,8 +185,6 @@ def sec_C_On(ke):
  
 def sec_C_Off(ke):
     print('{0} release'.format(ke)) # printing whatever key is pressed
-    if ke == pynput.keyboard.Key.esc: # Emergency Exit
-        return False
     if hasattr(ke, 'vk') and ke.vk == 96 : # Numpad 0
         midiout.send_message([0x80, 32, 0])  # (Note-off,G#-1,Volume 0)
     if hasattr(ke, 'vk') and ke.vk == 97 : # Numpad 1
@@ -259,9 +249,7 @@ def sec_D_On(ke):
         midiout.send_message([0x90, 51, 1])  # (Note-on,D#-3,Volume 1)
  
 def sec_D_Off(ke):
-    print('{0} release'.format(ke)) # printing whatever key is pressed
-    if ke == pynput.keyboard.Key.esc: # Emergency Exit
-        return False   
+    print('{0} release'.format(ke)) # printing whatever key is pressed  
     if hasattr(ke, 'vk') and ke.vk == 96 : # Numpad 0
         midiout.send_message([0x80, 42, 0])  # (Note-off,F#-2,Volume 0)
     if hasattr(ke, 'vk') and ke.vk == 97 : # Numpad 1
@@ -300,7 +288,8 @@ def d():
     sec_D.join()
 
 switch = 1
+p = int(input("Enter Virtual port number :"))
 # opening port
 midiout = rtmidi.MidiOut()
-midiout.open_port(1)
+midiout.open_port(p)
 a()    
