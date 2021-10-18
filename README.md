@@ -17,7 +17,7 @@ Download KeyMIDI.py file from [here](https://github.com/goldnjohn/KeyMIDI/blob/m
  <img alt="shot" src="./Assets/Numpad3.png" width="300" height="400">       <img alt="shot" src="./Assets/Numpad4.png" width="300" height="400">
     
 # Usage
-* Install `pynput` and `rtmidi` libraries through pip3 
+* Install `pynput` and `python-rtmidi` libraries through pip3 (`pip3 install pynput python-rtmidi`)
 * Download LoopMIDI application from [here](http://www.tobias-erichsen.de/wp-content/uploads/2020/01/loopMIDISetup_1_0_16_27.zip)
 * Create a virtual port inside loopMIDI
 * Run `KeyMIDI.exe` 
@@ -25,7 +25,7 @@ Download KeyMIDI.py file from [here](https://github.com/goldnjohn/KeyMIDI/blob/m
 
 # Dependencies
 * pynput
-* rtmidi
+* python-rtmidi
 
 # Issues
 Optimized for fast switching between keys but between section might have some latency (to be fixed in future updates)
